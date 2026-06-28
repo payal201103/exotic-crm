@@ -65,8 +65,8 @@ const statusStyles = {
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-8 px-5 py-6 md:px-8">
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <div className="space-y-8 px-5 py-6 md:px-6 lg:px-8 xl:px-10">
+      <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {dashboardStats.map((item) => {
           const Icon = statIcons[item.icon];
           const card = (
@@ -84,9 +84,6 @@ export default function DashboardPage() {
                   </p>
                   <p className="mt-2 text-3xl font-semibold text-slate-700">
                     {item.value}
-                  </p>
-                  <p className="mt-2 truncate text-sm text-slate-500">
-                    {item.detail}
                   </p>
                 </div>
                 <div className="grid size-12 shrink-0 place-items-center rounded-lg bg-slate-100 text-slate-300">
@@ -110,7 +107,7 @@ export default function DashboardPage() {
         })}
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_24rem]">
+      <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] xl:grid-cols-[minmax(0,1fr)_24rem]">
         <Card className="rounded-lg border-0 bg-white py-0 shadow-sm ring-1 ring-slate-200">
           <CardHeader className="border-b border-slate-200 px-6 py-5">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">

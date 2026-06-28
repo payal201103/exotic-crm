@@ -92,8 +92,8 @@ function VideoTypeBadge({ type }: Readonly<{ type: VideoWorkflowType }>) {
 
 export default function VideoWorkflowPage() {
   return (
-    <div className="space-y-7 px-5 py-6 md:px-8">
-      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+    <div className="space-y-7 px-5 py-6 md:px-6 lg:px-8 xl:px-10">
+      <section className="grid gap-5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
         {videoWorkflowStats.map((stat) => {
           const Icon = statIcons[stat.icon];
 
@@ -123,7 +123,7 @@ export default function VideoWorkflowPage() {
         })}
       </section>
 
-      <section className="grid gap-5 xl:grid-cols-3">
+      <section className="grid gap-5 lg:grid-cols-3">
         {videoWorkflowPeople.map((group) => {
           const Icon = roleIcons[group.role];
           const activePeople = group.people.filter(

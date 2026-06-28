@@ -138,7 +138,7 @@ export default function UsersPage() {
   }
 
   return (
-    <div className="space-y-5 px-5 py-8 md:px-8">
+    <div className="space-y-5 px-5 py-8 md:px-6 lg:px-8 xl:px-10">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <h1 className="flex items-center gap-3 text-3xl font-normal text-slate-700">
           <UsersRound className="size-8 text-slate-600" aria-hidden="true" />
@@ -152,7 +152,7 @@ export default function UsersPage() {
               Add User
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-h-[92vh] overflow-y-auto rounded-lg bg-slate-50 p-0 sm:max-w-6xl">
+          <DialogContent className="max-h-[92vh] overflow-y-auto rounded-lg bg-slate-50 p-0 md:max-w-6xl">
             <DialogHeader className="px-6 pb-0 pt-6">
               <DialogTitle className="flex items-center gap-2 text-3xl font-normal text-slate-700">
                 <UserPlus className="size-8 text-slate-600" aria-hidden="true" />
@@ -167,7 +167,7 @@ export default function UsersPage() {
                 </div>
 
                 <div className="space-y-6 p-6">
-                  <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                  <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName" className="text-slate-500">
                         First Name

@@ -38,8 +38,10 @@ const masterItems = [
 
 export function AppSidebar({
   collapsed,
+  className,
 }: Readonly<{
   collapsed: boolean;
+  className?: string;
 }>) {
   const pathname = usePathname();
   const [mastersOpen, setMastersOpen] = useState(false);
@@ -50,7 +52,8 @@ export function AppSidebar({
     <aside
       className={cn(
         "sticky top-0 z-30 flex h-screen shrink-0 flex-col overflow-hidden border-r border-white/15 bg-[#315cc7] text-white shadow-xl transition-[width] duration-300 ease-in-out",
-        collapsed ? "w-[4.75rem]" : "w-[17.5rem]"
+        collapsed ? "w-[4.75rem]" : "w-56",
+        className
       )}
     >
       <div
@@ -69,7 +72,7 @@ export function AppSidebar({
         </span>
       </div>
 
-      <nav className="flex-1 overflow-y-auto px-3 py-4">
+      <nav className="flex-1 overflow-y-auto px-3 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="space-y-1">
 
           {/* Dashboard first */}
@@ -107,7 +110,7 @@ export function AppSidebar({
           <div>
             <button
               type="button"
-              onClick={() => setMastersOpen((o) => !o)}
+              onClick={() => !collapsed && setMastersOpen((o) => !o)}
               className={cn(
                 "group flex h-11 w-full items-center gap-3 rounded-lg px-3 text-sm font-medium text-white/78 transition hover:bg-white/12 hover:text-white",
                 collapsed && "justify-center gap-0 px-0",
@@ -134,8 +137,16 @@ export function AppSidebar({
               />
             </button>
 
-            {mastersOpen && !collapsed && (
-              <div className="mt-1 space-y-1 pl-3">
+            {/* Smooth animated dropdown */}
+            <div
+              className={cn(
+                "overflow-hidden transition-all duration-200 ease-in-out",
+                mastersOpen && !collapsed
+                  ? "max-h-96 opacity-100"
+                  : "max-h-0 opacity-0"
+              )}
+            >
+              <div className="mt-1 space-y-0.5 pl-3">
                 {masterItems.map((item) => {
                   const active =
                     item.href !== "#" &&
@@ -156,7 +167,7 @@ export function AppSidebar({
                   );
                 })}
               </div>
-            )}
+            </div>
           </div>
 
           {/* Remaining nav items */}
@@ -195,7 +206,7 @@ export function AppSidebar({
       <div className="space-y-4 border-t border-white/15 p-4">
         <div
           className={cn(
-            "flex items-center gap-3 rounded-lg bg-white/10 p-3 ring-1 ring-white/15 max-sm:justify-center max-sm:p-2",
+            "flex items-center gap-3 rounded-lg bg-white/10 p-3 ring-1 ring-white/15",
             collapsed && "justify-center p-2"
           )}
         >
@@ -204,7 +215,7 @@ export function AppSidebar({
           </div>
           <div
             className={cn(
-              "min-w-0 transition-opacity max-sm:hidden",
+              "min-w-0 transition-opacity",
               collapsed && "hidden opacity-0"
             )}
           >

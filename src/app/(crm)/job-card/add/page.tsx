@@ -44,7 +44,7 @@ function SectionTitle({
 
 export default function AddJobCardPage() {
   return (
-    <div className="px-5 pb-8 md:px-8">
+    <div className="px-5 pb-8 md:px-6 lg:px-8 xl:px-10">
       <Card className="rounded-lg border-0 bg-white py-0 shadow-sm ring-1 ring-slate-200">
         <CardHeader className="rounded-t-lg bg-[#4f72e8] px-5 py-3 text-white">
           <CardTitle className="flex items-center gap-2 text-xl font-semibold">
@@ -56,7 +56,7 @@ export default function AddJobCardPage() {
         <CardContent className="space-y-8 p-5">
           <section>
             <SectionTitle icon={UserRound}>Customer Details</SectionTitle>
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               <div className="space-y-2">
                 <Label htmlFor="mobile-no" className="text-slate-500">
                   Mobile No <RequiredMark />
@@ -92,7 +92,7 @@ export default function AddJobCardPage() {
 
           <section>
             <SectionTitle icon={Car}>Vehicle Details</SectionTitle>
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               <div className="space-y-2">
                 <Label htmlFor="car-brand" className="text-slate-500">
                   Car Brand <RequiredMark />
