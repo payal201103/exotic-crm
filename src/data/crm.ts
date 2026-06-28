@@ -10,6 +10,23 @@ export type DashboardStatIcon =
   | "share";
 
 export type JobCardStatus = "Open" | "Closed";
+export type UserRole =
+  | "Admin"
+  | "Manager"
+  | "Accountant"
+  | "Videographer"
+  | "Video Editor"
+  | "Social Media Poster"
+  | "Staff";
+export type VideoWorkflowStage =
+  | "Recording Pending"
+  | "Recording"
+  | "Pending Edit"
+  | "Editing"
+  | "Ready To Post"
+  | "Posted";
+export type VideoWorkflowType = "Reel" | "YouTube" | "Walkaround";
+export type VideoWorkflowRole = "videographer" | "editor" | "poster";
 
 export type JobCard = {
   id: number;
@@ -35,6 +52,142 @@ export type JobCard = {
     | "Posting Pending"
     | "Posting Completed";
 };
+
+export type CrmUser = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  username: string;
+  contact: string;
+  email: string;
+  role: UserRole;
+};
+
+export const userRoleOptions: UserRole[] = [
+  "Admin",
+  "Manager",
+  "Accountant",
+  "Videographer",
+  "Video Editor",
+  "Social Media Poster",
+  "Staff",
+];
+
+export const users: CrmUser[] = [
+  {
+    id: 1,
+    firstName: "Exotic",
+    lastName: "",
+    username: "exotic",
+    contact: "",
+    email: "",
+    role: "Admin",
+  },
+  {
+    id: 2,
+    firstName: "Dhrumil",
+    lastName: "",
+    username: "dhrumil",
+    contact: "",
+    email: "",
+    role: "Admin",
+  },
+  {
+    id: 3,
+    firstName: "Bhavin",
+    lastName: "",
+    username: "bhavin",
+    contact: "",
+    email: "",
+    role: "Admin",
+  },
+  {
+    id: 4,
+    firstName: "Exotic",
+    lastName: "Thapa",
+    username: "exotic_manager",
+    contact: "",
+    email: "",
+    role: "Manager",
+  },
+  {
+    id: 5,
+    firstName: "Vaijul",
+    lastName: "Bhai",
+    username: "vaijul",
+    contact: "",
+    email: "",
+    role: "Manager",
+  },
+  {
+    id: 6,
+    firstName: "Dhaval",
+    lastName: "Editor",
+    username: "dhaval",
+    contact: "",
+    email: "",
+    role: "Video Editor",
+  },
+  {
+    id: 7,
+    firstName: "Jignesh",
+    lastName: "Videographer",
+    username: "jignesh",
+    contact: "",
+    email: "",
+    role: "Videographer",
+  },
+  {
+    id: 8,
+    firstName: "Harsh",
+    lastName: "Surela",
+    username: "harshh",
+    contact: "08511827943",
+    email: "harshsurela8@gmail.com",
+    role: "Admin",
+  },
+];
+
+const videographers = ["Jignesh Videographer", "Nirav Videographer"];
+const videoEditors = ["Dhaval Editor", "Mitesh Editor"];
+const socialPosters = ["Riya Poster", "Karan Poster"];
+
+const videoTypeByService: Record<string, VideoWorkflowType> = {
+  "Delivery Reel": "Reel",
+  "Walkaround Video": "Walkaround",
+  "Posting Package": "YouTube",
+  "GRAPHENE COATING": "Reel",
+};
+
+const stageByWorkflowStatus: Record<JobCard["workflowStatus"], VideoWorkflowStage> = {
+  "Recording Pending": "Recording",
+  "Recording Completed": "Pending Edit",
+  "Editing Pending": "Pending Edit",
+  "Editing Completed": "Ready To Post",
+  "Posting Pending": "Editing",
+  "Posting Completed": "Posted",
+};
+
+function parseCrmDate(value: string) {
+  const [day, month, year] = value.split("-").map(Number);
+
+  return new Date(year, month - 1, day);
+}
+
+function isSameDate(left: Date, right: Date) {
+  return (
+    left.getFullYear() === right.getFullYear() &&
+    left.getMonth() === right.getMonth() &&
+    left.getDate() === right.getDate()
+  );
+}
+
+function isSameMonth(left: Date, right: Date) {
+  return (
+    left.getFullYear() === right.getFullYear() &&
+    left.getMonth() === right.getMonth()
+  );
+}
 
 export const jobCards: JobCard[] = [
   {
@@ -283,6 +436,153 @@ export const dashboardStats = [
   tone: DashboardStatTone;
   detail: string;
   href?: string;
+}>;
+
+export const videoWorkflowTasks = jobCards.map((jobCard, index) => {
+  const stage = stageByWorkflowStatus[jobCard.workflowStatus];
+  const videoType =
+    jobCard.services.map((service) => videoTypeByService[service]).find(Boolean) ??
+    "Reel";
+  const videographer = videographers[index % videographers.length];
+  const editor =
+    stage === "Recording" ? undefined : videoEditors[index % videoEditors.length];
+  const poster =
+    stage === "Posted" || stage === "Ready To Post"
+      ? socialPosters[index % socialPosters.length]
+      : undefined;
+
+  return {
+    jobCardId: jobCard.id,
+    customer: jobCard.customerName,
+    carDetails: jobCard.vehicle,
+    carNumber: jobCard.carNumber,
+    videoType,
+    stage,
+    assignedTo: [
+      { role: "videographer" as const, name: videographer },
+      ...(editor ? [{ role: "editor" as const, name: editor }] : []),
+      ...(poster ? [{ role: "poster" as const, name: poster }] : []),
+    ],
+    dueDate: jobCard.deliveryDate,
+    isOverdue: jobCard.status === "Open" && stage !== "Posted",
+  };
+});
+
+export const videoWorkflowStats = [
+  {
+    key: "pending-acceptance",
+    label: "Pending Acceptance",
+    value: videoWorkflowTasks.filter((task) => task.stage === "Recording").length,
+    icon: "acceptance",
+    tone: "amber",
+  },
+  {
+    key: "in-progress",
+    label: "In Progress",
+    value: videoWorkflowTasks.filter((task) =>
+      ["Recording", "Pending Edit", "Editing", "Ready To Post"].includes(task.stage)
+    ).length,
+    icon: "video",
+    tone: "blue",
+  },
+  {
+    key: "completed-today",
+    label: "Completed Today",
+    value: videoWorkflowTasks.filter(
+      (task) => task.stage === "Posted" && isSameDate(parseCrmDate(task.dueDate), new Date())
+    ).length,
+    icon: "check",
+    tone: "emerald",
+  },
+  {
+    key: "completed-this-month",
+    label: "Completed This Month",
+    value: videoWorkflowTasks.filter(
+      (task) =>
+        task.stage === "Posted" && isSameMonth(parseCrmDate(task.dueDate), new Date())
+    ).length,
+    icon: "calendar",
+    tone: "cyan",
+  },
+] satisfies Array<{
+  key: string;
+  label: string;
+  value: number;
+  icon: "acceptance" | "video" | "check" | "calendar";
+  tone: DashboardStatTone;
+}>;
+
+export const videoWorkflowPeople = [
+  {
+    key: "videographers",
+    title: "Videographers",
+    role: "videographer",
+    tone: "blue",
+    people: videographers.map((name) => ({
+      name,
+      active: videoWorkflowTasks.filter((task) =>
+        task.assignedTo.some(
+          (assignee) => assignee.role === "videographer" && assignee.name === name
+        )
+      ).length,
+      done: videoWorkflowTasks.filter(
+        (task) =>
+          task.stage !== "Recording" &&
+          task.assignedTo.some(
+            (assignee) =>
+              assignee.role === "videographer" && assignee.name === name
+          )
+      ).length,
+    })),
+  },
+  {
+    key: "editors",
+    title: "Video Editors",
+    role: "editor",
+    tone: "emerald",
+    people: videoEditors.map((name) => ({
+      name,
+      active: videoWorkflowTasks.filter((task) =>
+        task.assignedTo.some(
+          (assignee) => assignee.role === "editor" && assignee.name === name
+        )
+      ).length,
+      done: videoWorkflowTasks.filter(
+        (task) =>
+          ["Ready To Post", "Posted"].includes(task.stage) &&
+          task.assignedTo.some(
+            (assignee) => assignee.role === "editor" && assignee.name === name
+          )
+      ).length,
+    })),
+  },
+  {
+    key: "posters",
+    title: "Social Media Posters",
+    role: "poster",
+    tone: "cyan",
+    people: socialPosters.map((name) => ({
+      name,
+      active: videoWorkflowTasks.filter((task) =>
+        task.assignedTo.some(
+          (assignee) => assignee.role === "poster" && assignee.name === name
+        )
+      ).length,
+      done: videoWorkflowTasks.filter(
+        (task) =>
+          task.stage === "Posted" &&
+          task.assignedTo.some(
+            (assignee) => assignee.role === "poster" && assignee.name === name
+          )
+      ).length,
+    })),
+  },
+] satisfies Array<{
+  key: string;
+  title: string;
+  role: VideoWorkflowRole;
+  tone: "blue" | "emerald" | "cyan";
+  people: Array<{ name: string; active: number; done: number }>;
 }>;
 
 export const todaysJobCards = jobCards.slice(0, 4).map((jobCard) => ({

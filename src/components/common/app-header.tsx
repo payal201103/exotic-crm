@@ -35,12 +35,16 @@ const pageConfig: Record<
     title: "Job Card List",
     eyebrow: "Job Cards",
   },
+  "/video-workflow": {
+    title: "Video Workflow Dashboard",
+    eyebrow: "Video Workflow",
+  },
 };
 
 function getPageConfig(pathname: string) {
   return (
     pageConfig[pathname] ?? {
-      title: "Exotic CRM",
+      title: "Job Card Details",
       eyebrow: "Workspace",
     }
   );

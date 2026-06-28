@@ -367,13 +367,9 @@ export function JobCardDetailView({
   ];
 
   return (
-    <div className="space-y-6 px-5 pb-8 md:px-8">
-      <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-        <h2 className="flex items-center gap-2 text-3xl font-semibold text-slate-700">
-          <ClipboardList className="size-8" aria-hidden="true" />
-          Job Card Details
-        </h2>
-        <div className="flex flex-wrap items-center gap-2">
+    <div className="space-y-6 px-5 py-8 md:px-8">
+      <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-end">
+        <div className="flex flex-wrap items-end gap-2">
           <Button asChild className="rounded-md bg-slate-500 hover:bg-slate-600">
             <Link href="/job-card">
               <ArrowLeft className="size-4" aria-hidden="true" />
