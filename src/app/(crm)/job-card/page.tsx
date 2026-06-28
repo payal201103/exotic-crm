@@ -17,7 +17,7 @@ import { jobCards } from "@/data/crm";
 
 export default function JobCardListPage() {
   return (
-    <div className="space-y-5 px-5 py-8 md:px-8">
+    <div className="space-y-5 px-5 py-8 md:px-6 lg:px-8 xl:px-10">
       <Card className="rounded-lg border-0 bg-white py-0 shadow-sm ring-1 ring-slate-200">
         <CardHeader className="border-b border-slate-200 bg-slate-50/70 px-5 py-4">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">

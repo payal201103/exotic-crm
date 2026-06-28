@@ -124,7 +124,7 @@ function EditJobCardDialog({
           Edit
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-h-[90vh] overflow-y-auto rounded-lg p-0 sm:max-w-5xl">
+      <DialogContent className="max-h-[90vh] overflow-y-auto rounded-lg p-0 md:max-w-5xl">
         <DialogHeader className="rounded-t-lg bg-[#4f72e8] px-5 py-3 text-white">
           <DialogTitle className="flex items-center gap-2 text-lg font-semibold">
             <ClipboardList className="size-5" aria-hidden="true" />
@@ -328,7 +328,7 @@ function EditJobCardDialog({
             </div>
           </section>
 
-          <DialogFooter className="justify-start sm:justify-start">
+          <DialogFooter className="justify-start md:justify-start">
             <Button type="submit" className="rounded-md bg-[#4f72e8] hover:bg-[#3f61cf]">
               <Save className="size-4" aria-hidden="true" />
               Update Job Card
@@ -367,7 +367,7 @@ export function JobCardDetailView({
   ];
 
   return (
-    <div className="space-y-6 px-5 py-8 md:px-8">
+    <div className="space-y-6 px-5 py-8 md:px-6 lg:px-8 xl:px-10">
       <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-end">
         <div className="flex flex-wrap items-end gap-2">
           <Button asChild className="rounded-md bg-slate-500 hover:bg-slate-600">
