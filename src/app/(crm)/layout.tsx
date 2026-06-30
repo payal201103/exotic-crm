@@ -1,3 +1,4 @@
+import { AuthGuard } from "@/components/auth/auth-guard";
 import { AppShell } from "@/components/common/app-shell";
 
 export default function CrmLayout({
@@ -5,5 +6,9 @@ export default function CrmLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <AppShell>{children}</AppShell>;
+  return (
+    <AuthGuard>
+      <AppShell>{children}</AppShell>
+    </AuthGuard>
+  );
 }

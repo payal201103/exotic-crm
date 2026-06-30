@@ -71,6 +71,40 @@ export type Customer = {
   gstNo: string;
 };
 
+export type Company = {
+  id: number;
+  name: string;
+  contactNo: string;
+  gstin: string;
+  address: string;
+};
+
+export type CarModel = {
+  id: number;
+  brandName: string;
+  modelName: string;
+};
+
+export type CarBrand = {
+  id: number;
+  name: string;
+};
+
+export type TaxSlab = {
+  id: number;
+  name: string;
+  rate: string;
+};
+
+export type Product = {
+  id: number;
+  name: string;
+  taxSlab: string;
+  hsnCode: string;
+  unit: string;
+  price: string;
+};
+
 export const userRoleOptions: UserRole[] = [
   "Admin",
   "Manager",
@@ -186,6 +220,81 @@ export const customers: Customer[] = [
     gstNo: "",
   },
 ];
+
+export const companies: Company[] = [
+  {
+    id: 1,
+    name: "Exotic Cars",
+    contactNo: "",
+    gstin: "",
+    address: "",
+  },
+];
+
+export const carModels: CarModel[] = [
+  { id: 1, brandName: "Audi", modelName: "A3" },
+  { id: 2, brandName: "Audi", modelName: "A4" },
+  { id: 3, brandName: "Audi", modelName: "A5" },
+  { id: 4, brandName: "Audi", modelName: "A6" },
+  { id: 5, brandName: "Audi", modelName: "A7" },
+  { id: 6, brandName: "Audi", modelName: "A8" },
+  { id: 7, brandName: "Audi", modelName: "A8 L" },
+  { id: 8, brandName: "Audi", modelName: "Q2" },
+];
+
+export const carBrands: CarBrand[] = [
+  { id: 1, name: "Aston Martin" },
+  { id: 2, name: "Audi" },
+  { id: 3, name: "Bentley" },
+  { id: 4, name: "BMW" },
+  { id: 5, name: "Byd" },
+  { id: 6, name: "Chevrolet" },
+  { id: 7, name: "Citroen" },
+  { id: 8, name: "Datsun" },
+  { id: 9, name: "Ferrari" },
+  { id: 10, name: "Fiat" },
+  { id: 11, name: "Force" },
+  { id: 12, name: "Ford" },
+  { id: 13, name: "Hindustan Motors" },
+  { id: 14, name: "Honda" },
+  { id: 15, name: "Hyundai" },
+  { id: 16, name: "Isuzu" },
+  { id: 17, name: "Jaguar" },
+  { id: 18, name: "Jeep" },
+  { id: 19, name: "Kia" },
+  { id: 20, name: "Lamborghini" },
+  { id: 21, name: "Land Rover" },
+  { id: 22, name: "Lexus" },
+  { id: 23, name: "Mahindra" },
+  { id: 24, name: "Maruti Suzuki" },
+  { id: 25, name: "Maserati" },
+  { id: 26, name: "Mercedes" },
+  { id: 27, name: "MG" },
+  { id: 28, name: "MG (Morris Garages)" },
+  { id: 29, name: "Mini" },
+  { id: 30, name: "Mitsubishi" },
+  { id: 31, name: "Nissan" },
+  { id: 32, name: "Opel" },
+  { id: 33, name: "Porsche" },
+  { id: 34, name: "Renault" },
+  { id: 35, name: "Rolls Royce" },
+  { id: 36, name: "Skoda" },
+  { id: 37, name: "Tata" },
+  { id: 38, name: "Toyota" },
+  { id: 39, name: "VinFast" },
+  { id: 40, name: "Volkswagen" },
+  { id: 41, name: "Volvo" },
+];
+
+export const carBrandMasterOptions = carBrands.map((brand) => brand.name);
+
+export const taxSlabs: TaxSlab[] = [
+  { id: 1, name: "EXEMPTED", rate: "0" },
+  { id: 2, name: "GST@18%", rate: "18" },
+  { id: 3, name: "NONE", rate: "0" },
+];
+
+export const products: Product[] = [];
 
 const videographers = ["Jignesh Videographer", "Nirav Videographer"];
 const videoEditors = ["Dhaval Editor", "Mitesh Editor"];

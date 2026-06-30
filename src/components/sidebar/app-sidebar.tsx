@@ -29,11 +29,11 @@ const navigation = [
 const masterItems = [
   { label: "Users", href: "/masters/users" },
   { label: "Customers", href: "/masters/customers" },
-  { label: "Companies", href: "#" },
-  { label: "Car Brand", href: "#" },
-  { label: "Car Model", href: "#" },
-  { label: "Tax Slab", href: "#" },
-  { label: "Products", href: "#" },
+  { label: "Companies", href: "/masters/companies" },
+  { label: "Car Brand", href: "/masters/car-brand" },
+  { label: "Car Model", href: "/masters/car-model" },
+  { label: "Tax Slab", href: "/masters/tax-slab" },
+  { label: "Products", href: "/masters/products" },
 ];
 
 export function AppSidebar({
