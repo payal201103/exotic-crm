@@ -92,7 +92,7 @@ function VideoTypeBadge({ type }: Readonly<{ type: VideoWorkflowType }>) {
 
 export default function VideoWorkflowPage() {
   return (
-    <div className="space-y-7 px-5 py-6 md:px-6 lg:px-8 xl:px-10">
+    <div className="space-y-6 px-4 py-5 sm:px-5 md:px-6 md:py-6 lg:px-8 xl:px-10">
       <section className="grid gap-5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
         {videoWorkflowStats.map((stat) => {
           const Icon = statIcons[stat.icon];
@@ -105,7 +105,7 @@ export default function VideoWorkflowPage() {
                 statToneStyles[stat.tone]
               )}
             >
-              <CardContent className="flex min-h-28 items-center justify-between gap-4 p-6">
+              <CardContent className="flex min-h-28 items-center justify-between gap-4 p-4 sm:p-6">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-normal">
                     {stat.label}
@@ -210,7 +210,7 @@ export default function VideoWorkflowPage() {
             <div className="flex items-center gap-2">
               <span>Show</span>
               <Select defaultValue="25">
-                <SelectTrigger className="h-9 w-20 rounded-md bg-white">
+                <SelectTrigger className="w-20">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -221,19 +221,19 @@ export default function VideoWorkflowPage() {
               </Select>
               <span>entries</span>
             </div>
-            <label className="flex items-center gap-2">
+            <label className="flex flex-col gap-2 sm:flex-row sm:items-center">
               Search:
-              <div className="relative">
+              <div className="relative w-full sm:w-auto">
                 <Search
                   className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400"
                   aria-hidden="true"
                 />
-                <Input className="h-9 w-full rounded-md bg-white pl-9 md:w-56" />
+                <Input className="w-full pl-9 sm:w-72 md:w-56" />
               </div>
             </label>
           </div>
 
-          <Table>
+          <Table className="min-w-[64rem]">
             <TableHeader>
               <TableRow className="hover:bg-transparent">
                 <TableHead className="text-xs uppercase text-[#4f72e8]">
@@ -324,7 +324,7 @@ export default function VideoWorkflowPage() {
               Showing 1 to {videoWorkflowTasks.length} of{" "}
               {videoWorkflowTasks.length} entries
             </p>
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-start md:justify-end">
               <button className="h-9 rounded-l-md border border-slate-200 bg-white px-3 text-slate-500">
                 Previous
               </button>

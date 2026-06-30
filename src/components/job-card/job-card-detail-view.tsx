@@ -124,7 +124,7 @@ function EditJobCardDialog({
           Edit
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-h-[90vh] overflow-y-auto rounded-lg p-0 md:max-w-5xl">
+        <DialogContent className="rounded-lg p-0 sm:max-w-[min(calc(100vw-2rem),48rem)] lg:max-w-[min(calc(100vw-4rem),64rem)]">
         <DialogHeader className="rounded-t-lg bg-[#4f72e8] px-5 py-3 text-white">
           <DialogTitle className="flex items-center gap-2 text-lg font-semibold">
             <ClipboardList className="size-5" aria-hidden="true" />
@@ -132,7 +132,7 @@ function EditJobCardDialog({
           </DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6 px-5 pb-5">
+        <form onSubmit={handleSubmit} className="space-y-6 px-4 pb-5 sm:px-5">
           <section className="space-y-5">
             <SectionTitle icon={UserRound}>Customer Details</SectionTitle>
             <div className="grid gap-5 md:grid-cols-2">
@@ -144,7 +144,6 @@ function EditJobCardDialog({
                   id="edit-mobile-no"
                   value={draft.mobile}
                   onChange={(event) => updateDraft("mobile", event.target.value)}
-                  className="h-10 rounded-md bg-white"
                 />
               </div>
               <div className="space-y-2">
@@ -157,7 +156,7 @@ function EditJobCardDialog({
                 >
                   <SelectTrigger
                     id="edit-customer-name"
-                    className="h-10 w-full rounded-md bg-white"
+                    className="w-full"
                   >
                     <SelectValue />
                   </SelectTrigger>
@@ -188,7 +187,7 @@ function EditJobCardDialog({
                 >
                   <SelectTrigger
                     id="edit-car-brand"
-                    className="h-10 w-full rounded-md bg-white"
+                    className="w-full"
                   >
                     <SelectValue />
                   </SelectTrigger>
@@ -214,7 +213,7 @@ function EditJobCardDialog({
                 >
                   <SelectTrigger
                     id="edit-car-model"
-                    className="h-10 w-full rounded-md bg-white"
+                    className="w-full"
                   >
                     <SelectValue />
                   </SelectTrigger>
@@ -238,7 +237,6 @@ function EditJobCardDialog({
                   id="edit-car-number"
                   value={draft.carNumber}
                   onChange={(event) => updateDraft("carNumber", event.target.value)}
-                  className="h-10 rounded-md bg-white"
                 />
               </div>
 
@@ -250,7 +248,6 @@ function EditJobCardDialog({
                   id="edit-car-color"
                   value={draft.carColor}
                   onChange={(event) => updateDraft("carColor", event.target.value)}
-                  className="h-10 rounded-md bg-white"
                 />
               </div>
             </div>
@@ -269,7 +266,7 @@ function EditJobCardDialog({
                 >
                   <SelectTrigger
                     id="edit-services"
-                    className="h-10 w-full rounded-md bg-white"
+                    className="w-full"
                   >
                     <SelectValue />
                   </SelectTrigger>
@@ -296,7 +293,6 @@ function EditJobCardDialog({
                   onChange={(event) =>
                     updateDraft("bookingDateTime", event.target.value)
                   }
-                  className="h-10 rounded-md bg-white"
                 />
               </div>
 
@@ -310,7 +306,6 @@ function EditJobCardDialog({
                   onChange={(event) =>
                     updateDraft("deliveryDateTime", event.target.value)
                   }
-                  className="h-10 rounded-md bg-white"
                 />
               </div>
             </div>
@@ -323,7 +318,7 @@ function EditJobCardDialog({
                 id="edit-notes"
                 value={draft.note}
                 onChange={(event) => updateDraft("note", event.target.value)}
-                className="min-h-20 rounded-md bg-white"
+                className="min-h-20"
               />
             </div>
           </section>
@@ -367,9 +362,9 @@ export function JobCardDetailView({
   ];
 
   return (
-    <div className="space-y-6 px-5 py-8 md:px-6 lg:px-8 xl:px-10">
+    <div className="space-y-5 px-4 py-5 sm:px-5 md:px-6 md:py-7 lg:px-8 xl:px-10">
       <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-end">
-        <div className="flex flex-wrap items-end gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-end">
           <Button asChild className="rounded-md bg-slate-500 hover:bg-slate-600">
             <Link href="/job-card">
               <ArrowLeft className="size-4" aria-hidden="true" />
@@ -393,7 +388,7 @@ export function JobCardDetailView({
       </div>
 
       <section className="overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-slate-200">
-        <div className="flex items-center justify-between gap-3 border-b border-slate-200 bg-slate-50/70 px-5 py-4">
+        <div className="flex items-center justify-between gap-3 border-b border-slate-200 bg-slate-50/70 px-4 py-4 sm:px-5">
           <h3 className="text-lg font-bold text-[#4f72e8]">
             Job Card #{jobCard.id}
           </h3>
@@ -402,8 +397,8 @@ export function JobCardDetailView({
           </Badge>
         </div>
 
-        <div className="p-5">
-          <div className="overflow-hidden border border-slate-200 text-base md:text-lg">
+        <div className="p-4 sm:p-5">
+          <div className="overflow-hidden border border-slate-200 text-sm md:text-lg">
             {rows.map(([label, value]) => (
               <DetailRow key={label} label={label} value={value} />
             ))}

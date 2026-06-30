@@ -153,7 +153,7 @@ export function AppHeader() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/95 backdrop-blur">
-      <div className="flex min-h-16 items-center justify-between gap-3 px-4 py-3 md:px-6 lg:min-h-20 lg:px-8 lg:py-4 xl:px-10">
+      <div className="flex min-h-16 items-center justify-between gap-3 px-4 py-3 sm:px-5 md:px-6 lg:min-h-20 lg:px-8 lg:py-4 xl:px-10">
         <div className="min-w-0 flex-1">
           {config.eyebrow ? (
             <p className="truncate text-sm font-medium text-slate-500">

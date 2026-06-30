@@ -138,35 +138,35 @@ export default function UsersPage() {
   }
 
   return (
-    <div className="space-y-5 px-5 py-8 md:px-6 lg:px-8 xl:px-10">
+    <div className="space-y-5 px-4 py-5 sm:px-5 md:px-6 md:py-7 lg:px-8 xl:px-10">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <h1 className="flex items-center gap-3 text-3xl font-normal text-slate-700">
-          <UsersRound className="size-8 text-slate-600" aria-hidden="true" />
+        <h1 className="flex min-w-0 items-center gap-3 text-2xl font-normal text-slate-700 md:text-3xl">
+          <UsersRound className="size-7 shrink-0 text-slate-600 sm:size-8" aria-hidden="true" />
           Users
         </h1>
 
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button className="w-fit rounded-md bg-[#4f72e8] hover:bg-[#3f61cf]">
+            <Button className="w-full rounded-md bg-[#4f72e8] hover:bg-[#3f61cf] sm:w-fit">
               <UserPlus className="size-4" aria-hidden="true" />
               Add User
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-h-[92vh] overflow-y-auto rounded-lg bg-slate-50 p-0 md:max-w-6xl">
-            <DialogHeader className="px-6 pb-0 pt-6">
-              <DialogTitle className="flex items-center gap-2 text-3xl font-normal text-slate-700">
-                <UserPlus className="size-8 text-slate-600" aria-hidden="true" />
+          <DialogContent className="rounded-lg bg-slate-50 p-0 sm:max-w-[min(calc(100vw-2rem),54rem)] xl:max-w-[min(calc(100vw-4rem),72rem)]">
+            <DialogHeader className="px-4 pb-0 pt-5 sm:px-6 sm:pt-6">
+              <DialogTitle className="flex items-center gap-2 text-2xl font-normal text-slate-700 md:text-3xl">
+                <UserPlus className="size-7 text-slate-600 sm:size-8" aria-hidden="true" />
                 Add New User
               </DialogTitle>
             </DialogHeader>
 
-            <form onSubmit={handleSave} className="px-6 pb-6">
+            <form onSubmit={handleSave} className="px-4 pb-5 sm:px-6 sm:pb-6">
               <div className="overflow-hidden rounded-md bg-white shadow-lg shadow-slate-400/30 ring-1 ring-slate-200">
-                <div className="bg-[#4f72e8] px-6 py-4 text-lg font-semibold text-white">
+                <div className="bg-[#4f72e8] px-4 py-3 text-base font-semibold text-white sm:px-6 sm:py-4 md:text-lg">
                   User Details
                 </div>
 
-                <div className="space-y-6 p-6">
+                <div className="space-y-6 p-4 sm:p-6">
                   <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName" className="text-slate-500">
@@ -180,7 +180,6 @@ export default function UsersPage() {
                         }
                         placeholder="First name"
                         required
-                        className="h-10 rounded-md bg-white"
                       />
                     </div>
 
@@ -196,7 +195,6 @@ export default function UsersPage() {
                         }
                         placeholder="Last name"
                         required
-                        className="h-10 rounded-md bg-white"
                       />
                     </div>
 
@@ -212,7 +210,6 @@ export default function UsersPage() {
                         }
                         placeholder="Username"
                         required
-                        className="h-10 rounded-md bg-white"
                       />
                     </div>
 
@@ -228,7 +225,6 @@ export default function UsersPage() {
                         }
                         placeholder="Contact Number"
                         required
-                        className="h-10 rounded-md bg-white"
                       />
                     </div>
 
@@ -243,7 +239,6 @@ export default function UsersPage() {
                         onChange={(event) => updateForm("email", event.target.value)}
                         placeholder="name@gmail.com"
                         required
-                        className="h-10 rounded-md bg-white"
                       />
                     </div>
 
@@ -258,7 +253,7 @@ export default function UsersPage() {
                       >
                         <SelectTrigger
                           id="role"
-                          className="h-10 w-full rounded-md bg-white"
+                          className="w-full"
                         >
                           <SelectValue placeholder="- Select -" />
                         </SelectTrigger>
@@ -285,7 +280,6 @@ export default function UsersPage() {
                         }
                         placeholder="********"
                         required
-                        className="h-10 rounded-md bg-white"
                       />
                     </div>
                   </div>
@@ -316,7 +310,7 @@ export default function UsersPage() {
             <div className="flex items-center gap-2">
               <span>Show</span>
               <Select value={pageSize} onValueChange={setPageSize}>
-                <SelectTrigger className="h-9 w-20 rounded-md bg-white">
+                <SelectTrigger className="w-20">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -327,18 +321,18 @@ export default function UsersPage() {
               </Select>
               <span>entries</span>
             </div>
-            <label className="flex items-center gap-2">
+            <label className="flex flex-col gap-2 sm:flex-row sm:items-center">
               Search:
               <Input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                className="h-9 w-full rounded-md bg-white md:w-56"
+                className="w-full sm:w-72 md:w-56"
               />
             </label>
           </div>
 
           <div className="overflow-hidden rounded-md border border-slate-200">
-            <Table>
+            <Table className="min-w-[54rem]">
               <TableHeader>
                 <TableRow className="bg-slate-100 hover:bg-slate-100">
                   {["Username", "Name", "Email", "Contact No.", "User Role", "Action"].map(
@@ -408,7 +402,7 @@ export default function UsersPage() {
               Showing {visibleUsers.length ? 1 : 0} to {visibleUsers.length} of{" "}
               {filteredUsers.length} entries
             </p>
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-start md:justify-end">
               <Button
                 type="button"
                 variant="outline"

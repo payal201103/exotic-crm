@@ -28,7 +28,7 @@ const navigation = [
 
 const masterItems = [
   { label: "Users", href: "/masters/users" },
-  { label: "Customers", href: "#" },
+  { label: "Customers", href: "/masters/customers" },
   { label: "Companies", href: "#" },
   { label: "Car Brand", href: "#" },
   { label: "Car Model", href: "#" },
@@ -44,9 +44,8 @@ export function AppSidebar({
   className?: string;
 }>) {
   const pathname = usePathname();
-  const [mastersOpen, setMastersOpen] = useState(false);
-
   const isMastersActive = pathname.startsWith("/masters");
+  const [mastersOpen, setMastersOpen] = useState(isMastersActive);
 
   return (
     <aside

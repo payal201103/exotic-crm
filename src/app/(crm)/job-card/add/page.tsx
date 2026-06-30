@@ -44,7 +44,7 @@ function SectionTitle({
 
 export default function AddJobCardPage() {
   return (
-    <div className="px-5 pb-8 md:px-6 lg:px-8 xl:px-10">
+    <div className="px-4 pb-6 sm:px-5 md:px-6 md:pb-8 lg:px-8 xl:px-10">
       <Card className="rounded-lg border-0 bg-white py-0 shadow-sm ring-1 ring-slate-200">
         <CardHeader className="rounded-t-lg bg-[#4f72e8] px-5 py-3 text-white">
           <CardTitle className="flex items-center gap-2 text-xl font-semibold">
@@ -53,7 +53,7 @@ export default function AddJobCardPage() {
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="space-y-8 p-5">
+        <CardContent className="space-y-7 p-4 sm:space-y-8 sm:p-5">
           <section>
             <SectionTitle icon={UserRound}>Customer Details</SectionTitle>
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -61,11 +61,7 @@ export default function AddJobCardPage() {
                 <Label htmlFor="mobile-no" className="text-slate-500">
                   Mobile No <RequiredMark />
                 </Label>
-                <Input
-                  id="mobile-no"
-                  className="h-10 rounded-md bg-white"
-                  placeholder="10-digit mobile number"
-                />
+                <Input id="mobile-no" placeholder="10-digit mobile number" />
               </div>
               <div className="space-y-2 xl:col-span-2">
                 <Label htmlFor="customer-name" className="text-slate-500">
@@ -74,7 +70,7 @@ export default function AddJobCardPage() {
                 <Select>
                   <SelectTrigger
                     id="customer-name"
-                    className="h-10 w-full rounded-md bg-white"
+                    className="w-full"
                   >
                     <SelectValue placeholder="Select or type customer name" />
                   </SelectTrigger>
@@ -100,7 +96,7 @@ export default function AddJobCardPage() {
                 <Select>
                   <SelectTrigger
                     id="car-brand"
-                    className="h-10 w-full rounded-md bg-white"
+                    className="w-full"
                   >
                     <SelectValue placeholder="Select Brand" />
                   </SelectTrigger>
@@ -120,7 +116,7 @@ export default function AddJobCardPage() {
                 <Select>
                   <SelectTrigger
                     id="car-model"
-                    className="h-10 w-full rounded-md bg-white"
+                    className="w-full"
                   >
                     <SelectValue placeholder="Select Model" />
                   </SelectTrigger>
@@ -137,21 +133,13 @@ export default function AddJobCardPage() {
                 <Label htmlFor="car-number" className="text-slate-500">
                   Car Number
                 </Label>
-                <Input
-                  id="car-number"
-                  className="h-10 rounded-md bg-white"
-                  placeholder="E.G., MH01AB1234"
-                />
+                <Input id="car-number" placeholder="E.G., MH01AB1234" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="car-color" className="text-slate-500">
                   Car Color
                 </Label>
-                <Input
-                  id="car-color"
-                  className="h-10 rounded-md bg-white"
-                  placeholder="e.g., White"
-                />
+                <Input id="car-color" placeholder="e.g., White" />
               </div>
             </div>
           </section>
@@ -166,7 +154,7 @@ export default function AddJobCardPage() {
                 <Select>
                   <SelectTrigger
                     id="service"
-                    className="h-10 w-full rounded-md bg-white"
+                    className="w-full"
                   >
                     <SelectValue placeholder="Select services..." />
                   </SelectTrigger>
@@ -186,7 +174,6 @@ export default function AddJobCardPage() {
                 <Input
                   id="booking-date"
                   type="datetime-local"
-                  className="h-10 rounded-md bg-white"
                 />
               </div>
               <div className="space-y-2">
@@ -196,7 +183,6 @@ export default function AddJobCardPage() {
                 <Input
                   id="delivery-date"
                   type="datetime-local"
-                  className="h-10 rounded-md bg-white"
                 />
               </div>
             </div>
@@ -207,7 +193,7 @@ export default function AddJobCardPage() {
               </Label>
               <Textarea
                 id="notes"
-                className="min-h-20 rounded-md bg-white"
+                className="min-h-20"
                 placeholder="Any special instructions or notes..."
               />
             </div>

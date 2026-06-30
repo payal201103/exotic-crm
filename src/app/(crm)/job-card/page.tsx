@@ -17,7 +17,7 @@ import { jobCards } from "@/data/crm";
 
 export default function JobCardListPage() {
   return (
-    <div className="space-y-5 px-5 py-8 md:px-6 lg:px-8 xl:px-10">
+    <div className="space-y-5 px-4 py-5 sm:px-5 md:px-6 md:py-7 lg:px-8 xl:px-10">
       <Card className="rounded-lg border-0 bg-white py-0 shadow-sm ring-1 ring-slate-200">
         <CardHeader className="border-b border-slate-200 bg-slate-50/70 px-5 py-4">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -26,7 +26,7 @@ export default function JobCardListPage() {
             </CardTitle>
             <div className="flex flex-col gap-3 md:flex-row md:items-center">
               <Select defaultValue="open">
-                <SelectTrigger className="h-9 w-full rounded-md bg-white md:w-48">
+                <SelectTrigger className="w-full md:w-48">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -38,7 +38,7 @@ export default function JobCardListPage() {
 
               <Button
                 asChild
-                className="rounded-md bg-[#4f72e8] hover:bg-[#3f61cf]"
+                className="w-full rounded-md bg-[#4f72e8] hover:bg-[#3f61cf] md:w-auto"
               >
                 <Link href="/job-card/add">
                   <Plus className="size-4" aria-hidden="true" />
@@ -54,7 +54,7 @@ export default function JobCardListPage() {
             <div className="flex items-center gap-2">
               <span>Show</span>
               <Select defaultValue="10">
-                <SelectTrigger className="h-9 w-20 rounded-md bg-white">
+                <SelectTrigger className="w-20">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -65,9 +65,9 @@ export default function JobCardListPage() {
               </Select>
               <span>entries</span>
             </div>
-            <label className="flex items-center gap-2">
+            <label className="flex flex-col gap-2 sm:flex-row sm:items-center">
               Search:
-              <Input className="h-9 w-full rounded-md bg-white md:w-56" />
+              <Input className="w-full sm:w-72 md:w-56" />
             </label>
           </div>
 
@@ -81,7 +81,7 @@ export default function JobCardListPage() {
             <p>
               Showing 1 to {jobCards.length} of {jobCards.length} entries
             </p>
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-start md:justify-end">
               <Button
                 variant="outline"
                 className="rounded-r-none bg-white text-slate-500"

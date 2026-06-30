@@ -40,7 +40,7 @@ export function AppShell({
   const ToggleIcon = sidebarCollapsed ? PanelLeftOpen : PanelLeftClose;
 
   return (
-    <div className="flex h-dvh overflow-hidden bg-slate-100 text-slate-950">
+    <div className="flex h-dvh min-w-0 overflow-hidden bg-slate-100 text-slate-950">
       <div className="group fixed left-4 top-4 z-50 hidden lg:block">
         <Button
           type="button"
@@ -65,7 +65,7 @@ export function AppShell({
         collapsed={sidebarCollapsed}
         className="hidden lg:flex"
       />
-      <main className="scrollbar-none min-w-0 flex-1 overflow-y-auto transition-[width] duration-300 ease-in-out">
+      <main className="scrollbar-none min-w-0 flex-1 overflow-x-hidden overflow-y-auto transition-[width] duration-300 ease-in-out">
         <AppHeader />
         {children}
       </main>

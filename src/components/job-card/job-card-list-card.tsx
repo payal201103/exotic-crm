@@ -21,10 +21,10 @@ export function JobCardListCard({
   jobCard: JobCard;
 }>) {
   return (
-    <article className="grid gap-4 border-l-4 border-l-[#4f72e8] bg-white px-4 py-4 shadow-sm ring-1 ring-slate-200 md:grid-cols-[minmax(0,1fr)_auto] md:px-5">
+    <article className="grid gap-4 rounded-md border-l-4 border-l-[#4f72e8] bg-white px-4 py-4 shadow-sm ring-1 ring-slate-200 md:grid-cols-[minmax(0,1fr)_auto] md:px-5">
       <div className="min-w-0 space-y-4">
         <div>
-          <h3 className="flex items-center gap-2 text-base font-bold text-[#4f72e8]">
+          <h3 className="flex min-w-0 items-center gap-2 text-base font-bold text-[#4f72e8]">
             <CalendarDays className="size-4" aria-hidden="true" />
             Job Card #{jobCard.id}
           </h3>
@@ -35,45 +35,45 @@ export function JobCardListCard({
 
         <div className="grid gap-3 text-sm font-medium text-slate-500 lg:grid-cols-2">
           <div className="space-y-2">
-            <p className="flex items-center gap-2">
+            <p className="flex min-w-0 items-center gap-2">
               <UserRound className="size-4 text-[#4f72e8]" aria-hidden="true" />
               <span className="font-bold text-slate-500">Customer:</span>
-              <span className="truncate">{jobCard.customerName}</span>
+              <span className="min-w-0 truncate">{jobCard.customerName}</span>
             </p>
-            <p className="flex items-center gap-2">
+            <p className="flex min-w-0 items-center gap-2">
               <Phone className="size-4 text-[#20c990]" aria-hidden="true" />
               <span className="font-bold text-slate-500">Mobile:</span>
-              <span>{jobCard.mobile}</span>
+              <span className="min-w-0 truncate">{jobCard.mobile}</span>
             </p>
           </div>
 
           <div className="space-y-2">
-            <p className="flex items-center gap-2">
+            <p className="flex min-w-0 items-center gap-2">
               <CalendarDays className="size-4 text-[#22b8cf]" aria-hidden="true" />
               <span className="font-bold text-slate-500">Booking:</span>
-              <span>{jobCard.bookingDate}</span>
+              <span className="min-w-0 truncate">{jobCard.bookingDate}</span>
             </p>
-            <p className="flex items-center gap-2">
+            <p className="flex min-w-0 items-center gap-2">
               <CalendarDays className="size-4 text-[#f2b72f]" aria-hidden="true" />
               <span className="font-bold text-slate-500">Delivery:</span>
-              <span>{jobCard.deliveryDate}</span>
+              <span className="min-w-0 truncate">{jobCard.deliveryDate}</span>
             </p>
           </div>
         </div>
 
         <div className="border-t border-slate-200 pt-3 text-sm font-medium text-slate-500">
-          <p className="flex items-center gap-2">
+          <p className="flex min-w-0 items-center gap-2">
             <Car className="size-4 text-[#ef4444]" aria-hidden="true" />
             <span className="font-bold text-slate-500">Vehicle:</span>
-            <Badge variant="outline" className="h-6 rounded-md bg-slate-50 text-xs">
+            <Badge variant="outline" className="h-6 min-w-0 rounded-md bg-slate-50 text-xs">
               {jobCard.vehicle}
             </Badge>
           </p>
         </div>
       </div>
 
-      <div className="flex items-start gap-2 md:flex-col md:items-end">
-        <Button className="rounded-md bg-[#20c990] hover:bg-[#18ad7b]">
+      <div className="flex flex-wrap items-start gap-2 md:flex-col md:items-end">
+        <Button className="rounded-md bg-[#20c990] hover:bg-[#18ad7b] max-sm:flex-1">
           <CheckCircle2 className="size-4" aria-hidden="true" />
           Mark Close
         </Button>

@@ -63,6 +63,14 @@ export type CrmUser = {
   role: UserRole;
 };
 
+export type Customer = {
+  id: number;
+  name: string;
+  mobile: string;
+  email: string;
+  gstNo: string;
+};
+
 export const userRoleOptions: UserRole[] = [
   "Admin",
   "Manager",
@@ -145,6 +153,37 @@ export const users: CrmUser[] = [
     contact: "08511827943",
     email: "harshsurela8@gmail.com",
     role: "Admin",
+  },
+];
+
+export const customers: Customer[] = [
+  {
+    id: 1,
+    name: "HAINIK BHAI",
+    mobile: "84017 95115",
+    email: "",
+    gstNo: "",
+  },
+  {
+    id: 2,
+    name: "M N AUTO (MAKSUD BHAI)",
+    mobile: "9978699177",
+    email: "",
+    gstNo: "",
+  },
+  {
+    id: 3,
+    name: "SAGAR SHAH VBN",
+    mobile: "7359792219",
+    email: "",
+    gstNo: "",
+  },
+  {
+    id: 4,
+    name: "Jayesh Bhai Baroda",
+    mobile: "9537570707",
+    email: "",
+    gstNo: "",
   },
 ];
 

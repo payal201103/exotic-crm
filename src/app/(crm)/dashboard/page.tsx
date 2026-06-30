@@ -65,7 +65,7 @@ const statusStyles = {
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-8 px-5 py-6 md:px-6 lg:px-8 xl:px-10">
+    <div className="space-y-6 px-4 py-5 sm:px-5 md:px-6 md:py-6 lg:px-8 xl:px-10">
       <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {dashboardStats.map((item) => {
           const Icon = statIcons[item.icon];
@@ -77,17 +77,17 @@ export default function DashboardPage() {
                 toneStyles[item.tone]
               )}
             >
-              <CardContent className="flex min-h-32 items-center justify-between gap-4 p-6">
+              <CardContent className="flex min-h-28 items-center justify-between gap-4 p-4 sm:min-h-32 sm:p-6">
                 <div className="min-w-0">
                   <p className="text-sm font-bold uppercase tracking-normal">
                     {item.label}
                   </p>
-                  <p className="mt-2 text-3xl font-semibold text-slate-700">
+                  <p className="mt-2 text-2xl font-semibold text-slate-700 md:text-3xl">
                     {item.value}
                   </p>
                 </div>
-                <div className="grid size-12 shrink-0 place-items-center rounded-lg bg-slate-100 text-slate-300">
-                  <Icon className="size-7" aria-hidden="true" />
+                <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-slate-100 text-slate-300 sm:size-12">
+                  <Icon className="size-6 sm:size-7" aria-hidden="true" />
                 </div>
               </CardContent>
             </Card>
@@ -109,7 +109,7 @@ export default function DashboardPage() {
 
       <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] xl:grid-cols-[minmax(0,1fr)_24rem]">
         <Card className="rounded-lg border-0 bg-white py-0 shadow-sm ring-1 ring-slate-200">
-          <CardHeader className="border-b border-slate-200 px-6 py-5">
+          <CardHeader className="border-b border-slate-200 px-4 py-4 sm:px-6 sm:py-5">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <CardTitle className="flex items-center gap-2 text-lg font-semibold text-[#315cc7]">
                 <CalendarDays className="size-5" aria-hidden="true" />
@@ -122,7 +122,7 @@ export default function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent className="p-0">
-            <Table>
+            <Table className="min-w-[48rem]">
               <TableHeader>
                 <TableRow className="bg-slate-50/80 hover:bg-slate-50/80">
                   <TableHead className="px-6 text-[#315cc7]">Job No.</TableHead>
